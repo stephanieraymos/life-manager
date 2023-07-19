@@ -33,7 +33,7 @@ async function addProject() {
   };
 
   try {
-    const response = await fetch('/api/projects', {
+    const response = await fetch('http://localhost:3000/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
