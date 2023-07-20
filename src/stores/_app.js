@@ -7,6 +7,7 @@ import { defineStore } from 'pinia';
 export const useAppStore = defineStore('appStore', {
   state: () => ({
     isDarkMode: true,
+    isAddProjectModalOpen: false,
   }),
   actions: {
     toggleDarkMode() {

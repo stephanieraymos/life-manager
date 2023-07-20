@@ -23,6 +23,10 @@ const { isDarkMode } = appStore;
   min-height: 100vh; /* Ensure the app takes at least the full viewport height */
   display: flex; /* Use flexbox to align the content vertically */
   flex-direction: column; /* Align the content vertically */
+    --dark-color-1: #333333;
+    --dark-color-2: #414141;
+    --dark-color-3: #454242;
+
 }
 body {
   margin: 0;

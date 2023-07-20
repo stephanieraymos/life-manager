@@ -1,7 +1,7 @@
 <!-- AddProject.vue -->
 <template>
   <div>
-    <h2>Add New Project</h2>
+    <!-- <h2>Add New Project</h2> -->
     <form @submit.prevent="addProject">
       <label for="name">Name:</label>
       <input v-model="name" type="text" required />
