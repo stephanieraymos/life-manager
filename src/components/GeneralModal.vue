@@ -1,6 +1,6 @@
 <template>
   <div :style="{ backgroundColor: props.color }" class="modal">
-    <span @click="onClose">Close</span>
+    <span @click="onClose" class="close">X</span>
     <!-- Slot to receive the dynamic component from the parent -->
     <h1>{{ props.title }}</h1>
     <slot></slot>
@@ -22,16 +22,27 @@ const onClose = () => {
 <style>
 /* Apply styles directly to the button element */
 .modal {
+  position: relative;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 4px;
   color: white;
-  cursor: pointer;
   width: 500px;
   height: 500px;
   margin: 0 auto;
   border-radius: 10px;
   background: var(--dark-color-2);
+}
+.close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  padding: 5px 10px;
+  background: var(--color-red);
+  border-radius: 50px;
 }
 </style>

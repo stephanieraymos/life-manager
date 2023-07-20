@@ -27,6 +27,8 @@ const { isDarkMode } = appStore;
     --dark-color-2: #414141;
     --dark-color-3: #454242;
 
+    --color-red: #770202;
+
 }
 body {
   margin: 0;
