@@ -1,15 +1,23 @@
-require('dotenv').config(); // Load environment variables from .env file
+// require('dotenv').config(); // Load environment variables from .env file
+const dotenv = require('dotenv');
 const cors = require('cors');
-
+dotenv.config()
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
 app.use(cors());
+console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_DATABASE);
+const result = dotenv.config();
 
+if (result.error) {
+  console.error(result.error);
+} else {
+  console.log('Environment variables loaded successfully');
+}
 // Start the server
-app.listen(4000, () => {
-    console.log('Server is running on http://localhost:4000');
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
   });
   
 // Create a MySQL pool to handle connections
@@ -19,7 +27,7 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   });
-
+console.log('Pool:', pool);
 app.use(express.json());
 
 // Route to add a new project to the database
@@ -63,6 +71,8 @@ app.get('/api/projects', (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'Error updating project in the database' });
       } else {
+        console.log('Query:', query);
+      console.log('Results:', res);
         res.status(200).json({ message: 'Project updated successfully' });
       }
     });
@@ -82,9 +92,3 @@ app.delete('/api/projects/:id', (req, res) => {
       }
     });
   });
-
-// Start the server
-const PORT = 4000; // Change this to your desired port number
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
