@@ -28,6 +28,8 @@ const { isDarkMode } = appStore;
     --dark-color-3: #454242;
 
     --color-red: #770202;
+    --color-green: #0b7702;
+    --color-blue: #020277;
 
 }
 body {

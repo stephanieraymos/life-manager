@@ -8,6 +8,7 @@
       <!-- Here, you can pass the dynamic component as a slot -->
       <AddProject />
     </GeneralModal>
+    <MyProjects />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import { useAppStore } from "../stores/_app.js";
 import GeneralModal from "./GeneralModal.vue";
 import GeneralButton from "./GeneralButton.vue";
 import AddProject from "./AddProject.vue";
+import MyProjects from "./MyProjects.vue";
 
 const appStore = useAppStore();
 

@@ -32,11 +32,11 @@ app.use(express.json());
 
 // Route to add a new project to the database
 app.post('/api/projects', (req, res) => {
-  const { name, description, start_date, end_date } = req.body;
+  const { name, description, start_date } = req.body;
 
-  const query = `INSERT INTO projects (name, description, start_date, end_date) VALUES (?, ?, ?, ?)`;
+  const query = `INSERT INTO projects (name, description, start_date) VALUES (?, ?, ?)`;
 
-  pool.query(query, [name, description, start_date, end_date], (err, results) => {
+  pool.query(query, [name, description, start_date], (err, results) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Error inserting project into the database' });
