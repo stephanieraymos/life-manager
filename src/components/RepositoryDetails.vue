@@ -3,7 +3,9 @@
         <router-link class="link" to="/projects"
             >&lt; Back to my projects</router-link
         >
-        <h2>Repo Details</h2>
+        <h2>
+            {{ $route.params.type == 'project' ? 'Project' : 'Repo' }} Details
+        </h2>
         <div><strong>Repository Name:</strong> {{ $route.params.slug }}</div>
     </div>
 </template>

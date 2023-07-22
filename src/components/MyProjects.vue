@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2>My Projects</h2>
+        <h2>My Github Repositories</h2>
         <div v-if="loading" class="loading">Loading...</div>
         <div v-else>
             <div class="repository-list">
@@ -8,9 +8,24 @@
                     v-for="repo in appStore.githubRepos"
                     :key="repo.id"
                     class="repository-list-item"
-                    @click="viewRepoDetails(repo)"
+                    @click="viewProjectDetails(repo, 'repo')"
                 >
                     {{ repo.name }}
+                </div>
+            </div>
+            <router-view> </router-view>
+        </div>
+        <h2>My Projects</h2>
+        <div v-if="loading" class="loading">Loading...</div>
+        <div v-else>
+            <div class="repository-list">
+                <div
+                    v-for="project in appStore.projects"
+                    :key="project.id"
+                    class="repository-list-item"
+                    @click="viewProjectDetails(project, 'project')"
+                >
+                    {{ project.name }}
                 </div>
             </div>
             <router-view> </router-view>
@@ -30,14 +45,18 @@ const loading = ref(true);
 
 onMounted(async () => {
     await appStore.getAllGithubRepositories();
+    await appStore.getAllProjects();
     loading.value = false;
 });
 
-const viewRepoDetails = repo => {
+const viewProjectDetails = (project, type) => {
     // Navigates to the RepoDetails component passing the repo name as a slug in the URL
-    console.log('repo name', repo);
+    console.log('project name', project);
     // router.push('/');
-    router.push({ name: 'details', params: { slug: repo.name } });
+    router.push({
+        name: 'details',
+        params: { slug: project.name, type: type },
+    });
 };
 </script>
 
